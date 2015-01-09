@@ -1,6 +1,8 @@
 package com.taramt.algo;
 
 public class LCS {
+	
+	private int MAX_LCM_COUNT = 0;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -12,9 +14,27 @@ public class LCS {
 		
         LCS obj = new LCS(); 
         String result = obj.lcs(str1, str2);
+        
+        obj.startPoints(str1, str2);
 
         System.out.println("\nLongest Common Subsequence : "+ result);
 
+	}
+	
+	public String startPoints(String str1, String str2) {
+		
+		String revstr1 = new StringBuffer(str1).reverse().toString();
+		String revstr2 = new StringBuffer(str2).reverse().toString();
+		
+		for(int i=0; i< revstr1.length()-MAX_LCM_COUNT; i++) {
+			for(int j=0; j< revstr2.length()-MAX_LCM_COUNT; j++) {
+				if(revstr1.charAt(i) == revstr2.charAt(j))
+					System.out.println("("+i+", "+j+")"+revstr1.charAt(i));
+			}
+		}
+		
+		
+		return null;
 	}
 	
 	
@@ -42,6 +62,8 @@ public class LCS {
 					arr[i][j] = Math.max(arr[i + 1][j], arr[i][j + 1]);
 			}
 		}
+		
+		MAX_LCM_COUNT = arr[0][0];
 		
 		// Print the array created
 		for (int i = 0; i<l1; i++) {
