@@ -110,11 +110,11 @@ public class LCS {
 					String temp = getAllLCS(arr, str1, str2, l1, l2, i, j,sb);
 					//
 					if(temp.length() == arr[0][0]){
-						if(ht.containsKey(temp)){
-							ht.put(temp, ht.get(temp)+1);	
+						if(ht.containsKey(new StringBuilder(temp).reverse().toString())){
+							ht.put(new StringBuilder(temp).reverse().toString(), ht.get(new StringBuilder(temp).reverse().toString())+1);	
 						}
 						else{
-							ht.put(temp, 1);	
+							ht.put(new StringBuilder(temp).reverse().toString(), 1);	
 						}
 					}
 					
@@ -122,11 +122,11 @@ public class LCS {
 					j++;
 					temp = getAllLCS(arr, str1, str2, l1, l2, i, j,sb);
 					if(temp.length()==arr[0][0]) {
-						if(ht.containsKey(temp)) {
-							ht.put(temp, ht.get(temp)+1);	
+						if(ht.containsKey(new StringBuilder(temp).reverse().toString())) {
+							ht.put(new StringBuilder(temp).reverse().toString(), ht.get(new StringBuilder(temp).reverse().toString())+1);	
 						}
 						else {
-							ht.put(temp, 1);	
+							ht.put(new StringBuilder(temp).reverse().toString(), 1);	
 						}
 					}
 					
